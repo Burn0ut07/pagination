@@ -9,11 +9,12 @@ begin
     gem.description = %Q{Trying to make the pagination world a better place}
     gem.email = "cyx.ucron@gmail.com"
     gem.homepage = "http://github.com/sinefunc/pagination"
-    gem.authors = ["Cyril David"]
+    gem.authors = ["Cyril David", "Joel Jauregui"]
     gem.add_development_dependency "contest"
     gem.add_development_dependency "haml"
     gem.add_development_dependency "sunspot"
     gem.add_development_dependency "ohm"
+    gem.add_development_dependency "mustache"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

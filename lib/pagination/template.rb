@@ -30,7 +30,11 @@ module Pagination
     # The actual HTML for the pagination.
     def render
       if engine.respond_to?(:render)
-        engine.render(Object.new, :items => items)
+        if engine.class == Views::Paginate
+          engine.render
+        elsif
+          engine.render(Object.new, :items => items)
+        end
       else
         engine.result(binding)
       end
@@ -40,7 +44,7 @@ module Pagination
     #
     # == Parameters:
     # type::
-    #   either 'haml' or 'erb'
+    #   either 'haml', 'erb', or 'mustache'
     #
     # == Returns:
     # The actual markup source.
@@ -56,12 +60,18 @@ module Pagination
     def self.erb
       File.read(File.join(ROOT, 'paginate.erb'))
     end
+    
+    def self.mustache
+      File.read(File.join(ROOT, 'paginate.mustache'))
+    end
 
   private
     def engine
       @engine ||= 
         if defined?(Haml)
           Haml::Engine.new(self.class.haml)
+        elsif defined?(Mustache)
+          Views::Paginate.new
         else
           require 'erb' if not defined?(ERB)
           ERB.new(self.class.erb)

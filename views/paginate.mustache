@@ -1,0 +1,35 @@
+{{#render?}}
+	<div class="pagination">
+    	{{#prev_page}}
+      		<a class="prev-link" href="?page={{prev_page}}">
+        		<span>&larr; Previous</span>
+			</a>
+		{{/prev_page}}
+		<nav class="page-numbers">
+			<span class="current-page">
+      			<span>
+          			<strong>Page</strong> {{page}} of {{total_pages}}
+				</span>
+			</span>
+      		<ul>
+				{{#displayed_pages}}
+					{{#current?}}
+            			<li class="active">
+              				<span>{{page}}</span>
+						</li>
+					{{/current?}}
+          			{{^current?}}
+            			<li>
+							<a href="?page={{page}}">{{page}}</a>
+						</li>
+					{{/current?}}
+				{{/displayed_pages}}
+	  		</ul>
+		</nav>
+		{{#next_page}}
+			<a class="next-link" href="?page={{next_page}}">
+      			<span>Next &rarr;</span>
+			</a>
+		{{/next_page}}
+	</div>
+{{/render?}}

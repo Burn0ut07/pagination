@@ -1,6 +1,8 @@
 module Pagination
   autoload :OhmAdapter,     'pagination/adapters/ohm'
   autoload :SunspotAdapter, 'pagination/adapters/sunspot'
+  autoload :ArrayAdapter,   'pagination/adapters/builtin'
+  autoload :MustacheView,   'pagination/views/paginate'
   autoload :Collection,     'pagination/collection'
   autoload :Template,       'pagination/template'
   autoload :Helpers,        'pagination/helpers'
